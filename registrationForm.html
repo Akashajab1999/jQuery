@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+    <title>Registration Form</title> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .wrap {
+            text-align: center;
+        }
+    </style>
+
+</head> 
+
+<body> 
+    <div class="main"> 
+        <form action=""> 
+            <label for="first">First Name:</label>
+            <input type="text" id="first" name="firstname" placeholder="Enter your first name">
+
+            <label for="last">Last Name:</label>
+            <input type="text" id="last" name="lastname" placeholder="Enter your last name">
+
+            <label for="dob">Birthdate:</label>
+            <input type="date" id="dob" name="birthdate">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+
+            <label for="repassword">Confirm Password:</label>
+            <input type="password" id="repassword" name="repassword" placeholder="Confirm your password">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="mobile">Contact:</label>
+            <input type="text" id="mobile" name="contact" placeholder="Enter your contact number">
+
+            <button type="button">Submit</button>
+        </form> 
+    </div> 
+    <script>
+        $(document).ready(()=>{
+            //button click event Binding
+            $("button").click(()=>{
+                console.log("button is clicked");
+                //data Bind
+                var firstname =$('#first').val();
+                var lastname =$('#last').val();
+                var Birthdate =$('#dob').val();
+                var email =$('#email').val();
+                var password =$('#password').val();
+                var repassword =$('#repassword').val();
+                var gender =$('#gender').val();
+                var contact =$('#mobile').val();
+                
+                console.log(firstname +""+lastname+""+Birthdate+""+email+""+password+""+repassword+" "+gender+""+contact);
+            })
+        });
+    </script> 
+</body> 
+
+</html>
