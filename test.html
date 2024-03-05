@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <label id="role"> select role</label>
+            <input type="radio"   name="rRole" value="tester">tester
+            <input type="radio" name="rRole" value="developer">Developer
+
+        </div>
+        <div class="col-md-4">
+
+            <p>Subjects :</p>
+            <select id=lstSubjects name=subjects class='form-control' size="2">
+                <option value='Dotnet'>Dotnet</option>
+            </select>
+        </div>
+
+    </div>
+
+    <h2>Multiple Choice Questions</h2>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Options</th>
+    <th>Correct Answer</th>
+  </tr>
+  <tbody id="tbody1">
+  <tr>
+    <td>1. What is the default access modifier of a class member in C#?</td>
+    <td>a) public<br>b) private<br>c) protected<br>d) internal</td>
+    <td>b) private</td>
+  </tr>
+  <tr>
+    <td>2. Which keyword is used to explicitly release resources in C#?</td>
+    <td>a) dispose<br>b) delete<br>c) finalize<br>d) using</td>
+    <td>a) dispose</td>
+  </tr>
+  <tr>
+    <td>3. Which data type is used to store a single character in C#?</td>
+    <td>a) char<br>b) string<br>c) int<br>d) float</td>
+    <td>a) char</td>
+  </tr>
+</tbody>
+</table>
+
+    </div>
+    <script>
+
+const dotnetmcqQuestions = [
+    {
+        question: "What is the default access modifier of a class member in C#?",
+        options: ["a) public", "b) private", "c) protected", "d) internal"],
+        correctAnswer: "b) private"
+    },
+    {
+        question: "Which keyword is used to explicitly release resources in C#?",
+        options: ["a) dispose", "b) delete", "c) finalize", "d) using"],
+        correctAnswer: "a) dispose"
+    },
+    {
+        question: "Which data type is used to store a single character in C#?",
+        options: ["a) char", "b) string", "c) int", "d) float"],
+        correctAnswer: "a) char"
+    }
+    // Add more questions as needed
+];
+
+
+const javaMcqQuestions = [
+    {
+        question: "What is the main purpose of Java programming language?",
+        options: ["a) Web Development", "b) Mobile Development", "c) General-purpose programming", "d) Game Development"],
+        correctAnswer: "c) General-purpose programming"
+    },
+    {
+        question: "Which keyword is used to define a constant in Java?",
+        options: ["a) var", "b) final", "c) const", "d) static"],
+        correctAnswer: "b) final"
+    },
+    {
+        question: "Which of the following data types is used to store a single character in Java?",
+        options: ["a) char", "b) String", "c) int", "d) float"],
+        correctAnswer: "a) char"
+    },
+    {
+        question: "What does JVM stand for?",
+        options: ["a) Java Virtual Machine", "b) Java Visual Model", "c) Java Virtual Model", "d) Java Visual Machine"],
+        correctAnswer: "a) Java Virtual Machine"
+    }
+    // Add more questions as needed
+];
+
+
+const pythonMcqQuestions = [
+    {
+        question: "Which of the following is a correct way to comment multiple lines in Python?",
+        options: ["a) /* Comment */", "b) # Comment", "c) // Comment", "d) <!-- Comment -->"],
+        correctAnswer: "b) # Comment"
+    },
+    {
+        question: "Which of the following is NOT a valid variable name in Python?",
+        options: ["a) my_variable", "b) _my_variable", "c) 2myvariable", "d) myVariable"],
+        correctAnswer: "c) 2myvariable"
+    },
+    {
+        question: "What does the 'len()' function do in Python?",
+        options: ["a) Returns the number of elements in a list, tuple, or string", "b) Returns the square root of a number", "c) Returns the largest element in a list or tuple", "d) Returns the smallest element in a list or tuple"],
+        correctAnswer: "a) Returns the number of elements in a list, tuple, or string"
+    },
+    {
+        question: "Which of the following is used to define a function in Python?",
+        options: ["a) func", "b) function", "c) def", "d) define"],
+        correctAnswer: "c) def"
+    }
+    // Add more questions as needed
+];
+
+
+     var testerSubjects=["selenium", "python","f#","php"];
+     var developerSubjects=[ "C#", "Java","Dotnet","Perl"];
+
+       $(document).ready(function(){
+        $('input[name=rRole][type=radio]').change(function(){
+                               
+                              var subjects=$('#lstSubjects');
+                               subjects.empty();
+                              if(this.value=="tester"){
+                                console.log("tester role");
+                                for(var i=0; i<testerSubjects.length;i++){
+                                    subjects.append( $('<option></option>').val( testerSubjects[i]).html( testerSubjects[i]));          
+
+                                }
+                             }
+                              else{
+                                console.log("developer role");
+                                for(var i=0; i<developerSubjects.length;i++){
+                                    subjects.append( $('<option></option>').val( developerSubjects[i]).html( developerSubjects[i]));          
+
+                                }
+                            }
+        });
+
+        $('#lstSubjects').change(function(){
+            var selectedSub = $(this).val();
+            console.log(selectedSub);
+            $('#tbody1').empty();
+           
+            if(this.value=='java'){
+                
+                for (var i = 0; i <javaMcqQuestions.length; i++) {
+                let dynamicRowHTML = "<tr> <td>"+javaMcqQuestions.options + " </td> <td>"+javaMcqQuestions.options+"</td> <td>"+ javaMcqQuestions.correctAnswer+"</td></tr>";
+                $('#tbody1').append(dynamicRowHTML);
+            }
+             }
+
+        })
+       });
+    </script>
+</body>
+</html>
